@@ -253,4 +253,8 @@ RIGHT JOIN genres USING(genre_id);
 
 ## Полезные ссылки
 
+[ACID](https://habr.com/ru/post/555920/)
+
+[Indexes](https://tproger.ru/articles/indeksy-v-postgresql/)
+
 [Домашка](hw03.md)
