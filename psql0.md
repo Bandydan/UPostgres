@@ -2,5 +2,5 @@
 
 ### Заходимо на офіційний сайт Postgres:
 
-!()[images/01.jpg]
+![](images/01.jpg)
 
