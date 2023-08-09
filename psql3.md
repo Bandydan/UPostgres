@@ -70,18 +70,18 @@ INSERT INTO genres (genre) VALUES
 	('horror');
 
 INSERT INTO books(title, genre_id) VALUES
-	('Майстер і Маргарита', 2),
-	('Фауст', 0),
-	('Білий клик', 3),
-	('Дюна', 1),
-	('Війна і мир', 2);
+	('The Master and Margarita', 2),
+	('Faust', 0),
+	('White Fang', 3),
+	('Dune', 1),
+	('War and Peace', 2);
 
 INSERT INTO authors (name) VALUES
-	('Френк Герберт'),
-	('Михайло Булгаков'), 
-	('Джек Лондон'), 
-	('Йоган Ґете'), 
-	('Роберт Хайнлайн');
+	('Frank Herbert'),
+	('Mikhail Bulgakov'), 
+	('Jack London'), 
+	('Johann Goethe'), 
+	('Robert Heinlein');
 
 INSERT INTO authors_books (author_id, book_id) VALUES 
 	(1, 4),
@@ -98,17 +98,17 @@ SELECT title, genre
 FROM books
 INNER JOIN genres ON (genres.id = books.genre_id);
 
-       title         | genre
----------------------+-------
- Майстер і Маргарита | novel
- Білий клик          | story
- Дюна                | SF
- Війна і мир         | novel
+       title              | genre
+--------------------------+-------
+ The Master and Margarita | novel
+ White Fang               | story
+ Dune                     | SF
+ War and Peace            | novel
 (4 rows)
 
 ```
 
-**`INNER JOIN`** виводить записи з лівої таблиці (першої з двох таблиць, які він об'єднує), для яких знайдеться відповідний запис у правій (другій та останній у списку) таблиці. Якщо відповідності у правій таблиці немає, такий запис не виводиться. В даному випадку можна бачити, що запис про книгу "Фауст" не виводиться. Це відбувається через те, що `genre_id` цей запис дорівнює нулю, а такого жанру в таблиці жанрів немає.
+**`INNER JOIN`** виводить записи з лівої таблиці (першої з двох таблиць, які він об'єднує), для яких знайдеться відповідний запис у правій (другій та останній у списку) таблиці. Якщо відповідності у правій таблиці немає, такий запис не виводиться. В даному випадку можна бачити, що запис про книгу "Faust" не виводиться. Це відбувається через те, що `genre_id` цей запис дорівнює нулю, а такого жанру в таблиці жанрів немає.
 Так само в результат не потрапляє жанр horror, тому що немає жодної книги з таким жанром.
 
 ```sql
@@ -116,13 +116,13 @@ SELECT title, genre
 FROM books
 LEFT JOIN genres ON (genres.id = books.genre_id);
 
-       title         | genre
----------------------+-------
- Майстер і Маргарита | novel
- Фауст               |
- Білий клик          | story
- Дюна                | SF
- Війна і мир         | novel
+       title              | genre
+--------------------------+-------
+ The Master and Margarita | novel
+ Faust                    |
+ White Fang               | story
+ Dune                     | SF
+ War and Peace            | novel
 
 (5 rows)
 
@@ -142,7 +142,7 @@ WHERE NOT EXISTS (
 
  title
 -------
- Фауст
+ Faust
 (1 row)
 ```
 
@@ -157,7 +157,7 @@ WHERE genre IS NULL;
 
  title
 -------
- Фауст
+ Faust
 (1 row)
 
 ```
@@ -169,13 +169,13 @@ SELECT title, genre
 FROM books
 RIGHT JOIN genres ON (genres.id = books.genre_id);
 
-       title         | genre
----------------------+--------
- Майстер і Маргарита | novel
- Білий клик          | story
- Дюна                | SF
- Війна і мир         | novel
-                     | horror
+       title              | genre
+--------------------------+--------
+ The Master and Margarita | novel
+ White Fang               | story
+ Dune                     | SF
+ War and Peace            | nov
+                          | horror
 (5 rows)
 ```
 
@@ -191,14 +191,14 @@ SELECT title, genre
 FROM books RIGHT JOIN genres ON (genres.id = books.genre_id);
 
 
-       title         | genre
----------------------+--------
- Фауст               |
-                     | horror
- Війна і мир         | novel
- Білий клик          | story
- Дюна                | SF
- Майстер і Маргарита | novel
+       title              | genre
+--------------------------+--------
+ Faust                    |
+                          | horror
+ War and Peace            | novel
+ White Fang               | story
+ Dune                     | SF
+ The Master and Margarita | novel
 (6 rows)
 ```
 
@@ -210,14 +210,14 @@ FROM books
 FULL JOIN genres ON (genres.id = books.genre_id);
 
 
-       title         | genre
----------------------+--------
- Майстер і Маргарита | novel
- Фауст               |
- Білий клик          | story
- Дюна                | SF
- Війна і мир         | novel
-                     | horror
+       title              | genre
+--------------------------+--------
+ The Master and Margarita | novel
+ Faust                    |
+ White Fang               | story
+ Dune                     | SF
+ War and Peace            | novel
+                          | horror
 (6 rows)
 ```
 
@@ -233,13 +233,13 @@ FROM books
 RIGHT JOIN genres USING(genre_id);
 
 
-       title         | genre
----------------------+--------
- Майстер і Маргарита | novel
- Білий клик          | story
- Дюна                | SF
- Війна і мир         | novel
-                     | horror
+       title              | genre
+--------------------------+--------
+ The Master and Margarita | novel
+ White Fang               | story
+ Dune                     | SF
+ War and Peace            | novel
+                          | horror
 (5 rows)
 
 
